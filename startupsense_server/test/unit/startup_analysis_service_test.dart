@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('StartupAnalysisService demo mode', () {
-    final service = StartupAnalysisService(apiKey: '');
+    final service = StartupAnalysisService(featherlessApiKey: '');
     final idea = StartupIdeaRequest(
       startupName: 'Fieldnote',
       description:
@@ -36,5 +36,24 @@ void main() {
         expect(report.evidenceDisclaimer, contains('No live market research'));
       },
     );
+  });
+
+  group('StartupAnalysisService Featherless configuration', () {
+    test('uses AI mode when a Featherless key and model are configured', () {
+      final service = StartupAnalysisService(
+        featherlessApiKey: 'test-key',
+        featherlessModel: 'provider/model-name',
+      );
+
+      expect(service.mode, 'ai');
+    });
+
+    test('uses Qwen by default when Featherless is configured', () {
+      final service = StartupAnalysisService(
+        featherlessApiKey: 'test-key',
+      );
+
+      expect(service.mode, 'ai');
+    });
   });
 }

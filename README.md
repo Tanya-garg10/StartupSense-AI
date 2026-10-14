@@ -55,19 +55,22 @@ migration. Serverpod's configured companion Flutter app is launched with the
 server.
 
 ```powershell
-# Optional: configure a real AI provider for this server process.
-$env:OPENAI_API_KEY = "your-provider-key"
-$env:OPENAI_MODEL = "gpt-4o-mini"
+# Configure Featherless for this server process.
+$env:FEATHERLESS_API_KEY = "your-featherless-key"
+# Optional override; defaults to Qwen/Qwen3-Next-80B-A3B-Instruct.
+# $env:FEATHERLESS_MODEL = "provider/model-name"
 
 # Start the development stack and apply pending migrations.
 & "$env:LOCALAPPDATA\Pub\Cache\bin\serverpod.bat" start -- --apply-migrations
 ```
 
-Without `OPENAI_API_KEY`, the backend uses a deterministic demo analysis. Every
-demo report is labelled as simulated and is not presented as AI output. When a
-key is present, OpenAI is called only from the server; provider errors are
-returned as structured errors rather than silently changing to demo mode.
-`OPENAI_MODEL` is optional and defaults to `gpt-4o-mini`.
+When `FEATHERLESS_API_KEY` is set, the server calls Featherless through its
+chat completions API, using `Qwen/Qwen3-Next-80B-A3B-Instruct` by default.
+Set `FEATHERLESS_MODEL` to override it with another model ID available to your
+Featherless account. The provider key must remain in the server process.
+Without a key, the backend uses deterministic demo analysis. Every demo report
+is labelled as simulated and is not presented as AI output. Provider errors
+are returned as structured errors rather than silently changing to demo mode.
 
 To run Flutter separately in Chrome while the server is running:
 
@@ -87,9 +90,9 @@ the authenticated account.
 
 ## AI, evidence, and privacy
 
-- Set `OPENAI_API_KEY` in the server process environment only. Never put it in
-  Flutter code, `--dart-define`, a client configuration asset, or a database
-  record.
+- Set `FEATHERLESS_API_KEY` in the server process environment only. Never put
+  it in Flutter code, `--dart-define`, a client configuration asset, or a
+  database record.
 - `.env.example` is a reference template only; Serverpod does not load `.env`
   files automatically. Set environment variables in the server's shell.
 - The server asks the provider for JSON, deserializes it into typed report
@@ -170,5 +173,5 @@ Pop-Location
 - **Report cannot be saved:** confirm pending migrations were applied during
   server startup and inspect the Serverpod logs for database/provider errors.
 - **Demo report shown:** this is expected when the server process has no
-  non-empty `OPENAI_API_KEY`; demo output is deterministic and explicitly
+  non-empty `FEATHERLESS_API_KEY`; demo output is deterministic and explicitly
   labelled.
