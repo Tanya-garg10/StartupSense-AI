@@ -1,0 +1,16 @@
+class: StartupAnalysisRecord
+table: startup_analysis
+serverOnly: true
+fields:
+  authUserId: UuidValue
+  startupName: String
+  industry: String
+  stage: String
+  ideaJson: String
+  reportJson: String
+  analysisMode: String
+  status: String
+  createdAt: DateTime, default=now
+indexes:
+  startup_analysis_user_created_idx:
+    fields: authUserId, createdAt

@@ -1,0 +1,9 @@
+class: StartupIdeaRequest
+fields:
+  startupName: String
+  description: String
+  industry: String
+  targetCustomer: String
+  geography: String
+  estimatedBudget: double
+  stage: String

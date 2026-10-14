@@ -1,0 +1,5 @@
+class: CompetitorHypothesis
+fields:
+  alternativeType: String
+  whatTheyOffer: String
+  differentiationOpportunity: String

@@ -1,0 +1,6 @@
+class: RiskItem
+fields:
+  title: String
+  description: String
+  likelihood: String
+  mitigation: String

@@ -1,0 +1,5 @@
+class: RoadmapWeek
+fields:
+  week: int
+  theme: String
+  tasks: List<String>

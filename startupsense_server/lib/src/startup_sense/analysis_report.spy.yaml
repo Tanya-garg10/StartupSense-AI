@@ -1,0 +1,21 @@
+class: AnalysisReport
+fields:
+  executiveSummary: String
+  problem: String
+  solution: String
+  fitAssessment: String
+  targetCustomers: List<CustomerPersona>
+  marketOpportunity: String
+  marketAssumptions: List<String>
+  competitorHypotheses: List<CompetitorHypothesis>
+  strengths: List<String>
+  weaknesses: List<String>
+  opportunities: List<String>
+  threats: List<String>
+  businessModel: String
+  revenueStreams: List<String>
+  risks: List<RiskItem>
+  experiments: List<ValidationExperiment>
+  mvpRecommendations: List<String>
+  roadmap: List<RoadmapWeek>
+  evidenceDisclaimer: String

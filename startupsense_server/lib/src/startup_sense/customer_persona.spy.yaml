@@ -1,0 +1,5 @@
+class: CustomerPersona
+fields:
+  label: String
+  description: String
+  needs: List<String>

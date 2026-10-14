@@ -1,0 +1,7 @@
+class: AnalysisResponse
+fields:
+  id: int
+  createdAt: DateTime
+  idea: StartupIdeaRequest
+  report: AnalysisReport
+  mode: String

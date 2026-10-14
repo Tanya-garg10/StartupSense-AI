@@ -1,0 +1,8 @@
+class: SavedAnalysisSummary
+fields:
+  id: int
+  startupName: String
+  industry: String
+  createdAt: DateTime
+  status: String
+  isDemo: bool

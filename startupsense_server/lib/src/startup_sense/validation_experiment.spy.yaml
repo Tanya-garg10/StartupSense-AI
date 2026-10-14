@@ -1,0 +1,7 @@
+class: ValidationExperiment
+fields:
+  title: String
+  hypothesis: String
+  method: String
+  successSignal: String
+  estimatedDays: int
