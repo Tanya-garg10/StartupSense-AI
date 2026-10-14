@@ -5,9 +5,11 @@ import 'dart:io';
 import '../generated/protocol.dart';
 import 'analysis_provider.dart';
 
-class OpenAiAnalysisProvider implements AnalysisProvider {
-  OpenAiAnalysisProvider(this._apiKey, {String? model})
-    : _model = model?.trim().isNotEmpty == true ? model!.trim() : 'gpt-4o-mini';
+class FeatherlessAnalysisProvider implements AnalysisProvider {
+  FeatherlessAnalysisProvider(this._apiKey, {String? model})
+    : _model = model?.trim().isNotEmpty == true
+          ? model!.trim()
+          : 'Qwen/Qwen3-Next-80B-A3B-Instruct';
 
   final String _apiKey;
   final String _model;
@@ -22,7 +24,7 @@ class OpenAiAnalysisProvider implements AnalysisProvider {
 
     try {
       final request = await client
-          .postUrl(Uri.https('api.openai.com', '/v1/chat/completions'))
+          .postUrl(Uri.https('api.featherless.ai', '/v1/chat/completions'))
           .timeout(const Duration(seconds: 15));
       request.headers
         ..contentType = ContentType.json
